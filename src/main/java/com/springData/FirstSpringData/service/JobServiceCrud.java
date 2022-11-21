@@ -1,6 +1,7 @@
 package com.springData.FirstSpringData.service;
 
 import com.springData.FirstSpringData.orm.Job;
+import com.springData.FirstSpringData.orm.Worker;
 import com.springData.FirstSpringData.repository.JobRepository;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +73,12 @@ public class JobServiceCrud {
     }
     public void showAllJobs() {
         this.jobRepository.findAll().forEach(e -> System.out.println("id: " + e.getId() + " name: "+ e.getName() + " description: " + e.getDescription()));
+    }
+    public List<Job> findByName(Scanner scanner) {
+        System.out.println("type the name of the worker(s) you want to find");
+        String name=scanner.nextLine();
+        List<Job> list =jobRepository.findByName(name);
+        return list;
+
     }
 }
